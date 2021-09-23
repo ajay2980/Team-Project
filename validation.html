@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <label for="firstname">FIRSTNAME</label>
+        <input type="text" id="firstname">
+        <p class="errormsg1 sameerror"></p>
+    </div>
+
+    <div>
+        <label for="lastname">LASTNAME</label>
+        <input type="text" id="lastname">
+        <p class="errormsg2 sameerror"></p>
+    </div>
+
+    <button id="submit">submit</button>
+
+    <script>
+        $(document).ready(function() {
+            
+            $("#submit").click(function(){
+               if(!$("#firstname").val() && !$("#lastname").val()){
+                   $(".sameerror").text("please enter this field is required");
+                   $(".sameerror").css("color","red");
+                    return false;
+               } else {
+                   if(!$("#firstname").val()){
+                       $(".errormsg1").text("please enter this field is required");
+                    $(".errormsg1").css("color","red");
+                    return false;
+                   }
+                   if(!$("#lastname").val()){
+                      $(".errormsg2").text("please enter this field is required");
+                    $(".errormsg2").css("color","red");
+                    return false; 
+                   }
+               }
+            });
+
+            $("#firstname").blur(function() {
+
+                if ($("#firstname").val()) {
+                    $(".errormsg1").text("");
+                    return false;
+                } else {
+                    $(".errormsg1").text("please enter this field is required");
+                    $(".errormsg1").css("color","red");
+                    return false;
+                }
+
+            });
+
+            $("#lastname").blur(function() {
+
+                if ($("#lastname").val()) {
+                    $(".errormsg2").text("");
+                    return false;
+                } else {
+                    $(".errormsg2").text("please enter this field is required");
+                    $(".errormsg2").css("color","red");
+                    return false;
+                }
+
+            });
+
+        });
+    </script>
+
+
+</body>
+
+</html>
